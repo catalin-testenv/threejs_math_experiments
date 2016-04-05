@@ -1,0 +1,26 @@
+{
+  "name": "threejs_math_experiments",
+  "version": "0.0.1",
+  "description": "threejs_math_experiments",
+  "author": "catalinenache78s@gmail.com",
+  "dependencies": {
+    "jquery": "~2.2.2",
+    "lodash": "~4.8.2"
+  },
+  "devDependencies": {
+    "babel-cli": "~6.6.4",
+    "babel-core": "~6.7.4",
+    "babel-polyfill": "~6.7.4",
+    "babel-preset-es2015": "~6.6.0",
+    "babel-preset-stage-0": "~6.5.0",
+    "babelify": "~7.2.0",
+    "browserify": "~13.0.0",
+    "http-server": "latest"
+  },
+
+  "scripts": {
+    "setup": "npm install",
+    "js": "browserify -t babelify -o dist/app.js src/app.js",
+    "serve": "node node_modules/http-server/bin/http-server -a 0.0.0.0 -p 8001 -c-1"
+  }
+}
