@@ -1,8 +1,0 @@
-{
-  "globals": {
-    "$": false,
-    "jQuery": false,
-    "THREE": false
-  },
-  "esversion": 6
-}
