@@ -21,7 +21,7 @@
 
   "scripts": {
     "setup": "npm install",
-    "js": "browserify -t babelify -o dist/app.js src/app.js",
+    "js": "browserify -t babelify -o dist/assets/js/app.js src/app.js",
     "serve": "node node_modules/http-server/bin/http-server -a 0.0.0.0 -p 8001 -c-1"
   }
 }
