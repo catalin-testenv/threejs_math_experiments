@@ -1,5 +1,7 @@
 
 let stage = $('#stage');
+let inputs = $('#inputs');
+let slider_1 = $('<div class="slider"></div>');
 
 const SCENE_WIDTH = stage.width();
 const SCENE_HEIGHT = stage.height();
@@ -16,19 +18,10 @@ let cubeMaterials = [
     new THREE.MeshBasicMaterial({color:0x0000FF, transparent:true, opacity:0.8}),
     new THREE.MeshBasicMaterial({color:0x5555AA, transparent:true, opacity:0.8}),
 ];
+let cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
+let cube = new THREE.Mesh(geometry, cubeMaterial);
+let controls = new THREE.OrbitControls(camera);
 
-var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
-var cube = new THREE.Mesh(geometry, cubeMaterial);
-
-let controls = new THREE.OrbitControls( camera );
-controls.addEventListener('change', orbitControlsChanged);
-
-function animate() {
-    requestAnimationFrame( animate );
-    // cube.rotation.y += 0.01;
-    controls.update();
-    renderer.render(scene, camera);
-}
 
 THREE.Utils = {
     cameraLookDir: function(camera) {
@@ -38,18 +31,30 @@ THREE.Utils = {
     }
 };
 
+function main() {
+    requestAnimationFrame(main);
+    // cube.rotation.y += 0.01;
+    controls.update();
+    renderer.render(scene, camera);
+}
+
 function orbitControlsChanged(e) {
     //console.log(THREE.Utils.cameraLookDir(camera));
 }
 
+controls.addEventListener('change', orbitControlsChanged);
 renderer.setSize(SCENE_WIDTH, SCENE_HEIGHT);
 camera.position.z = 5;
-scene.add( cube );
+scene.add(cube);
 
-
-stage.append(renderer.domElement);
-animate();
-
-$('.slider').slider({min: 0, max: 1, step: 0.01, value: 0, orientation: "horizontal", slide: function( event, ui ) {
+slider_1.slider({min: 0.01, max: 1, step: 0.01, value: 0.01, orientation: "horizontal", slide: function(event, ui) {
     cube.scale.y = ui.value * 2;
 }});
+
+stage.append(renderer.domElement);
+inputs.append(slider_1);
+
+main();
+
+
+
